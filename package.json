@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start":"node app.js",
-    "test": "standard && node app.js"
+    "test": "standard && node app.js",
+    "fix":"standard --fix"
   },
   "keywords": [],
   "author": "Pierre Agus",
