@@ -7,7 +7,7 @@ export class QuizLogic{
   }
 
   getCurrentQuestion(){
-    return this.quizQuestions[index];
+    return this.quizQuestions[this.index];
   }
 
   guess(answer){
