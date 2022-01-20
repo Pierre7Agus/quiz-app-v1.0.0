@@ -1,4 +1,4 @@
-class QuizLogic{
+export class QuizLogic{
   index=0;
   score=0;
   //recibe como parametro un array el cual contiene instancias de Questions.js
