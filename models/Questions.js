@@ -1,4 +1,4 @@
-class Questions{
+export class Questions{
 
 	constructor(question,choices,answer){
 		this.question=question;
