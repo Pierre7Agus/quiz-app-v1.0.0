@@ -17,4 +17,8 @@ class QuizLogic{
     this.index++;
   }
 
+  isEnded(){
+    return this.quizQuestions.length===this.index
+  }
+
 }
