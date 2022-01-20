@@ -23,4 +23,9 @@ export class UI{
     })
   }
 
+  showProgress(index,total){
+    let footer=document.getElementById('foot')
+    footer.innerText=`Pregunta ${index} de ${total}`
+  }
+
 }
