@@ -8,6 +8,7 @@ export class UI {
   // choices es un array
 
   const buttons = document.querySelectorAll('.options')
+  let one=0
 
   choices.forEach((choice, index) => {
     buttons[index].innerText = choice
@@ -20,7 +21,8 @@ export class UI {
         const button = document.createElement('button');
         button.innerText= choice;
         button.addEventListener('click',(event)=>{
-            callback(event.target.innerText);
+            one++
+            callback(event.target.innerText,one);
         });
         button.classList.add('options');
         options.append(button);
@@ -35,9 +37,19 @@ export class UI {
 
   nextQuestion(callback){
     const next=document.querySelector('.next')
-    next.addEventListener('click',()=>{
-      callback()
+    next.addEventListener('click',(e)=>{
+      callback(e.target)
     })
+  }
+
+  hideNext(isTrue){
+    let element=document.querySelector('.next')
+    if(isTrue || !isTrue){
+      element.disabled=false
+    }
+    if(isTrue === null){
+      element.disabled=true
+    }
   }
 
   showEnd(score,total){
