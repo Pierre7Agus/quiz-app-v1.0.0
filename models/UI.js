@@ -31,4 +31,10 @@ export class UI {
     footer.innerText = `Pregunta ${index} de ${total}`
   }
 
+  nextQuestion(callback){
+    const next=document.querySelector('.next')
+    next.addEventListener('click',()=>{
+      callback()
+    })
+  }
 }

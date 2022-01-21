@@ -10,10 +10,7 @@ const renderPage = (quiz, ui) => {
   else {
     ui.showQuestion(quiz.getCurrentQuestion().question)
     ui.showChoices(quiz.getCurrentQuestion().choices, (text) => {
-
       quiz.guess(text)
-      renderPage(quiz, ui)
-
     })
     ui.showProgress(quiz.index + 1, quizQuestions.length)
   }

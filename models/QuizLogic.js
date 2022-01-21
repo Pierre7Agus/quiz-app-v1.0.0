@@ -15,7 +15,10 @@ export class QuizLogic{
     if(this.getCurrentQuestion().correctAnswer(answer)){
       this.score++;
     }
-    this.index++;
+  }
+
+  next(){
+    this.index++
   }
 
   isEnded(){
