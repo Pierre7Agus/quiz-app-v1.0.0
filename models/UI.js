@@ -1,31 +1,34 @@
-export class UI{
-  constructor(){}
-
-  showQuestion(textQuestion){
-    let question=document.getElementById('question')
-    question.innerText=textQuestion
+export class UI {
+  showQuestion (textQuestion) {
+    const question = document.getElementById('question')
+    question.innerText = textQuestion
   }
 
-  showChoices(choices,callback){
-  //choices es un array
-    let buttons=document.querySelectorAll('.options')
-    let parentElement=document.querySelector('.quiz_section_options')
+  showChoices (choices, callback) {
+  // choices es un array
 
-    parentElement.addEventListener('click',(event)=>{
-      if(event.target.className === "options"){
-        callback(event.target.innerText)
-      }
-      event.stopPropagation()
-    })
+    const options = document.querySelector('.choices');
+    options.innerHTML='';
+    choices.forEach((choice)=>{
+        const button = document.createElement('button');
+        button.innerText= choice;
+        button.addEventListener('click',(event)=>{
+            callback(event.target.innerText);
+        });
+        button.classList.add('options');
+        options.append(button);
+    });
 
-    choices.forEach((choice,index)=>{
-      buttons[index].innerText=choice
+    const buttons = document.querySelectorAll('.options')
+
+    choices.forEach((choice, index) => {
+      buttons[index].innerText = choice
     })
   }
 
-  showProgress(index,total){
-    let footer=document.getElementById('foot')
-    footer.innerText=`Pregunta ${index} de ${total}`
+  showProgress (index, total) {
+    const footer = document.getElementById('foot')
+    footer.innerText = `Pregunta ${index} de ${total}`
   }
 
 }

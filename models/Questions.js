@@ -1,12 +1,11 @@
-export class Questions{
+export class Questions {
+  constructor (question, choices, answer) {
+    this.question = question
+    this.choices = choices
+    this.answer = answer
+  }
 
-	constructor(question,choices,answer){
-		this.question=question;
-		this.choices=choices;
-		this.answer=answer;
-	}
-
-	correctAnswer(answer){
-		return this.answer === answer;
-	}
+  correctAnswer (answer) {
+    return this.answer === answer
+  }
 }
