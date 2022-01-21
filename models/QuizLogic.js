@@ -1,5 +1,5 @@
 export class QuizLogic{
-
+  isTrue=null
   index =0
   score =0
   //recibe como parametro un array el cual contiene instancias de Questions.js
@@ -12,13 +12,14 @@ export class QuizLogic{
   }
 
   guess(answer){
-    if(this.getCurrentQuestion().correctAnswer(answer)){
-      this.score++;
-    }
+    this.isTrue=this.getCurrentQuestion().correctAnswer(answer)
   }
 
   next(){
     this.index++
+    if(this.isTrue){
+      this.score++
+    }
   }
 
   isEnded(){

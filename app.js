@@ -12,7 +12,7 @@ const renderAgain=(quiz,ui)=>{
 const renderPage = (quiz, ui) => {
 
   if (quiz.isEnded()) {
-    console.log('bye')
+    ui.showEnd(quiz.score,quizQuestions.length)
   }
   else {
     ui.showQuestion(quiz.getCurrentQuestion().question)

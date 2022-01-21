@@ -13,14 +13,6 @@ export class UI {
     buttons[index].innerText = choice
   })
 
-  const parentElement=document.querySelector('.choices')
-  parentElement.addEventListener('click',(e)=>{
-    if(e.target.className === 'options'){
-        callback(event.target.innerText)
-    }
-  })
-
-    /*
     //este codigo permite generar botones, de esta manera se puede dar la posibilidad al usuario de que elija cuantas opciones de respuesta deba tener el quiz
     const options = document.querySelector('.choices');
     options.innerHTML='';
@@ -33,7 +25,7 @@ export class UI {
         button.classList.add('options');
         options.append(button);
     });
-*/
+
   }
 
   showProgress (index, total) {
@@ -46,5 +38,25 @@ export class UI {
     next.addEventListener('click',()=>{
       callback()
     })
+  }
+
+  showEnd(score,total){
+    const head=document.querySelector('.quiz_header')
+    const sec=document.querySelector('.quiz_section')
+    const foot=document.querySelector('.quiz_footer')
+    const quiz=document.querySelector('.quiz')
+    const templateEnd=document.getElementById('templateTest_end').content
+    const fragment=document.createDocumentFragment()
+
+    templateEnd.querySelector('h3').textContent=`Contestaste correctamente ${score} de ${total}`
+    templateEnd.querySelector('.qualification').textContent=`Tu calificacion es de ${score*10} sobre ${total*10}`
+    templateEnd.querySelector('.message').textContent=`Felicidades has terminado el quiz`
+
+    const clone=templateEnd.cloneNode(true)
+    fragment.appendChild(clone)
+    quiz.removeChild(head)
+    quiz.removeChild(sec)
+    quiz.removeChild(foot)
+    quiz.appendChild(fragment)
   }
 }
