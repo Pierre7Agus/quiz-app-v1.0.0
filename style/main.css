@@ -20,6 +20,7 @@ button{
 }
 
 .quiz > *{
+  width:70%;
   margin-bottom:1em ;
 }
 
@@ -33,10 +34,6 @@ button{
   min-height:80vh;
   background: #F2BC50 ;
 
-}
-.quiz_section{
-
-  width: 70%;
 }
 
 .quiz_section > header{
@@ -63,4 +60,12 @@ button{
 .options:hover{
   background:  #705725;
   color:white;
+}
+.quiz_footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.next{
+  padding:5px 10px;
 }
