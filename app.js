@@ -2,6 +2,13 @@ import { UI } from './models/UI.js'
 import { QuizLogic } from './models/QuizLogic.js'
 import { quizQuestions } from './data/generateQuestions.js'
 
+const renderAgain=(quiz,ui)=>{
+  ui.nextQuestion(()=>{
+    quiz.next()
+    renderPage(quiz,ui)
+  })
+}
+
 const renderPage = (quiz, ui) => {
 
   if (quiz.isEnded()) {
@@ -22,6 +29,7 @@ function main () {
   const quiz = new QuizLogic(quizQuestions)
 
   renderPage(quiz, ui)
+  renderAgain(quiz, ui)
 }
 
 main()
