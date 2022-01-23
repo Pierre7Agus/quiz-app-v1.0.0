@@ -26,4 +26,13 @@ export class QuizLogic{
     return this.quizQuestions.length===this.index
   }
 
+  isNextActive(callback,e){
+      if(e.target.className === 'options'){
+        this.isTrue=this.isTrue
+      }else{
+        this.isTrue=null
+      }
+      callback(this.isTrue)
+  }
+  
 }

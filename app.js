@@ -6,7 +6,7 @@ const renderAgain=(quiz,ui)=>{
   ui.nextQuestion(()=>{
     quiz.next()
     renderPage(quiz,ui)
-    if(quiz.index<quizQuestions.length){
+    if(quiz.index<quizQuestions.length-1){
       quiz.isTrue=null
       ui.hideNext(quiz.isTrue)
     }
@@ -29,7 +29,7 @@ const renderPage = (quiz, ui) => {
     ui.showProgress(quiz.index + 1, quizQuestions.length)
     ui.hideNext(quiz.isTrue)
   }
-
+  
 }
 
 function main () {
@@ -38,6 +38,12 @@ function main () {
 
   renderPage(quiz, ui)
   renderAgain(quiz, ui)
+
+  document.addEventListener('click',(e)=>{
+    quiz.isNextActive((valor)=>{
+      ui.hideNext(valor,quiz.index,quizQuestions.length)
+    },e)  
+  })
 }
 
 main()

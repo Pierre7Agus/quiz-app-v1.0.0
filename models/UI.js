@@ -7,26 +7,25 @@ export class UI {
   showChoices (choices, callback) {
   // choices es un array
 
-  const buttons = document.querySelectorAll('.options')
   let one=0
 
+  //este codigo permite generar botones, de esta manera se puede dar la posibilidad al usuario de que elija cuantas opciones de respuesta deba tener el quiz
+  const options = document.querySelector('.choices');
+  options.innerHTML='';
+  choices.forEach((choice)=>{
+      const button = document.createElement('button');
+      button.innerText= choice;
+      button.addEventListener('click',(event)=>{
+          one++
+          callback(event.target.innerText,one);
+      });
+      button.classList.add('options');
+      options.append(button);
+  });
+  const buttons = document.querySelectorAll('.options')
   choices.forEach((choice, index) => {
     buttons[index].innerText = choice
   })
-
-    //este codigo permite generar botones, de esta manera se puede dar la posibilidad al usuario de que elija cuantas opciones de respuesta deba tener el quiz
-    const options = document.querySelector('.choices');
-    options.innerHTML='';
-    choices.forEach((choice)=>{
-        const button = document.createElement('button');
-        button.innerText= choice;
-        button.addEventListener('click',(event)=>{
-            one++
-            callback(event.target.innerText,one);
-        });
-        button.classList.add('options');
-        options.append(button);
-    });
 
   }
 
@@ -37,18 +36,20 @@ export class UI {
 
   nextQuestion(callback){
     const next=document.querySelector('.next')
-    next.addEventListener('click',(e)=>{
-      callback(e.target)
+    next.addEventListener('click',()=>{
+      callback()
     })
   }
 
-  hideNext(isTrue){
-    let element=document.querySelector('.next')
-    if(isTrue || !isTrue){
-      element.disabled=false
-    }
-    if(isTrue === null){
-      element.disabled=true
+  hideNext(isTrue,index,len){
+    if(index < len){
+      let element=document.querySelector('.next')
+      if(isTrue || !isTrue){
+        element.disabled=false
+      }
+      if(isTrue === null){
+        element.disabled=true
+      }
     }
   }
 
